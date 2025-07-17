@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-azulTecnicoClaro hover:bg-azulConfianca text-brancoTecnico font-bold py-2 px-4 rounded transition duration-300;
+  }
+  
+  .input-field {
+    @apply w-full p-2 border border-prataProfissional rounded focus:outline-none focus:ring-2 focus:ring-azulTecnicoClaro;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold text-cinzaEngenharia mb-6 text-center;
+  }
+}
