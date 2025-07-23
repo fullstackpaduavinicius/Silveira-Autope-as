@@ -9,6 +9,11 @@ import carrossel2 from '../assets/images/carrosselhome2.jpeg';
 import carrossel3 from '../assets/images/carrosselhome3.jpeg';
 
 const Home = () => {
+  const handleOfertasClick = () => {
+    // Armazena a intenção de rolar para ofertas
+    sessionStorage.setItem('scrollToOfertas', 'true');
+  };
+
   return (
     <>
       <Helmet>
@@ -96,7 +101,7 @@ const Home = () => {
               </p>
               <div className="mt-auto">
                 <Link
-                  to="/lojas"
+                  to="/localizacao"
                   className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition w-full text-center"
                 >
                   Localizar Lojas
@@ -132,8 +137,9 @@ const Home = () => {
               </p>
               <div className="mt-auto">
                 <Link
-                  to="/ofertas"
+                  to="/catalogo#ofertas"
                   className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition w-full text-center"
+                  onClick={handleOfertasClick}
                 >
                   Ver Ofertas
                 </Link>
@@ -143,7 +149,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Restante do código permanece igual */}
       {/* Diferenciais */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -174,7 +179,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> 
 
       {/* Seção de contato */}
       <section className="py-16 px-4 bg-white">

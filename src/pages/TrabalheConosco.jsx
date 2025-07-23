@@ -1,5 +1,4 @@
-// src/components/TrabalheConosco.jsx
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
 import { Helmet } from 'react-helmet';
@@ -9,6 +8,14 @@ export default function TrabalheConosco() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+  // Efeito para rolar até o topo quando a página carregar
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
