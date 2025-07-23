@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import Logo from '../assets/images/LOGO_SILVEIRA.png'; // Importe a imagem
 
 const Header = () => {
   return (
@@ -11,7 +12,12 @@ const Header = () => {
       
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <h1 className="text-2xl font-bold">Silveira Auto Peças</h1>
+          {/* Substituído o texto pela logo */}
+          <img 
+            src={Logo} 
+            alt="Silveira Auto Peças" 
+            className="h-20" // Ajuste a altura conforme necessário
+          />
         </Link>
         
         <nav className="hidden md:block">
@@ -20,6 +26,7 @@ const Header = () => {
             <li><Link to="/sobre" className="hover:text-prataProfissional transition">Sobre Nós</Link></li>
             <li><Link to="/catalogo" className="hover:text-prataProfissional transition">Catálogo</Link></li>
             <li><Link to="/contato" className="hover:text-prataProfissional transition">Contato</Link></li>
+            <li><Link to="/TrabalheConosco" className="hover:text-prataProfissional transition">Trabalhe Conosco</Link></li>
           </ul>
         </nav>
         
