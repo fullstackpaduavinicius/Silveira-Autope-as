@@ -149,6 +149,48 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Seção de Super Ofertas */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">
+            Super Ofertas Silveira Autopeças
+          </h2>
+          
+          {/* Grid de 9 imagens horizontais (3x3) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+              <div key={item} className="bg-gray-100 rounded-lg overflow-hidden h-48">
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  {/* Espaço reservado para imagem de oferta */}
+                  <span>Imagem de Oferta {item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Carrossel de banners (3 banners) */}
+          <div className="mb-12">
+            <Carousel
+              showArrows={true}
+              showThumbs={false}
+              showStatus={false}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={6000}
+            >
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="bg-gray-100 rounded-lg overflow-hidden h-64">
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    {/* Espaço reservado para banner promocional */}
+                    <span>Banner Promocional {item}</span>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
       {/* Diferenciais */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
