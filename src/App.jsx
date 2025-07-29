@@ -8,14 +8,15 @@ import Localizacao from "./pages/Localizacao";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
-import ScrollToTop from "./components/ScrollToTop"; // Novo componente importado
+import InstagramButton from "./components/InstagramButton"; // Novo componente importado
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <Header />
       <main className="min-h-[80vh]">
-        <ScrollToTop /> {/* Adicionado aqui */}
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
@@ -27,6 +28,7 @@ function App() {
       </main>
       <Footer />
       <WhatsappButton />
+      <InstagramButton /> {/* Novo botão adicionado */}
     </>
   );
 }

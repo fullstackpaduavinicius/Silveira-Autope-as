@@ -10,7 +10,6 @@ import carrossel3 from '../assets/images/carrosselhome3.jpeg';
 
 const Home = () => {
   const handleOfertasClick = () => {
-    // Armazena a intenção de rolar para ofertas
     sessionStorage.setItem('scrollToOfertas', 'true');
   };
 
@@ -54,7 +53,7 @@ const Home = () => {
       {/* Seção principal com carrossel e cards ajustados */}
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Carrossel - agora com altura fixa */}
+          {/* Carrossel */}
           <div className="w-full lg:w-1/2 h-[600px]">
             <Carousel
               showArrows={true}
@@ -89,63 +88,64 @@ const Home = () => {
             </Carousel>
           </div>
 
-          {/* Cards de ação - agora com altura igual ao carrossel */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full">
-              <div className="flex items-center mb-3">
-                <FiMapPin className="text-xl text-gray-700 mr-3" />
-                <h3 className="text-xl font-semibold text-gray-800">Encontre sua loja</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                A maior variedade de peças e acessórios para você
-              </p>
-              <div className="mt-auto">
-                <Link
-                  to="/localizacao"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition w-full text-center"
-                >
-                  Localizar Lojas
-                </Link>
-              </div>
-            </div>
+          {/* Cards de ação transformados em botões grandes */}
+         {/* Cards de ação transformados em botões grandes */}
+<div className="w-full lg:w-1/2 flex flex-col gap-6">
+  <Link
+    to="/localizacao"
+    className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full flex flex-col transition-all hover:shadow-lg hover:border-blue-500 group"
+  >
+    <div className="flex items-center justify-between h-full">
+      <div className="flex items-center">
+        <FiMapPin className="text-2xl text-blue-600 mr-3 group-hover:text-blue-700" />
+        <div>
+          <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600">Encontre sua loja</h3>
+          <p className="text-gray-600 mt-1">
+            A maior variedade de peças e acessórios para você
+          </p>
+        </div>
+      </div>
+      <span className="text-2xl text-gray-400 group-hover:text-blue-500">→</span>
+    </div>
+  </Link>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full">
-              <div className="flex items-center mb-3">
-                <FiBriefcase className="text-xl text-gray-700 mr-3" />
-                <h3 className="text-xl font-semibold text-gray-800">Trabalhe conosco</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Faça parte do time de autopeças que mais cresce no Brasil
-              </p>
-              <div className="mt-auto">
-                <Link
-                  to="/trabalheconosco"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition w-full text-center"
-                >
-                  Ver Vagas
-                </Link>
-              </div>
-            </div>
+  <Link
+    to="/trabalheconosco"
+    className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full flex flex-col transition-all hover:shadow-lg hover:border-blue-500 group"
+  >
+    <div className="flex items-center justify-between h-full">
+      <div className="flex items-center">
+        <FiBriefcase className="text-2xl text-blue-600 mr-3 group-hover:text-blue-700" />
+        <div>
+          <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600">Trabalhe conosco</h3>
+          <p className="text-gray-600 mt-1">
+            Faça parte do time de autopeças que mais cresce no Brasil
+          </p>
+        </div>
+      </div>
+      <span className="text-2xl text-gray-400 group-hover:text-blue-500">→</span>
+    </div>
+  </Link>
 
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full">
-              <div className="flex items-center mb-3">
-                <FiTag className="text-xl text-gray-700 mr-3" />
-                <h3 className="text-xl font-semibold text-gray-800">Confira nossas ofertas</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Veja nosso folheto promocional
-              </p>
-              <div className="mt-auto">
-                <Link
-                  to="/catalogo#ofertas"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition w-full text-center"
-                  onClick={handleOfertasClick}
-                >
-                  Ver Ofertas
-                </Link>
-              </div>
-            </div>
-          </div>
+  <Link
+    to="/catalogo#ofertas"
+    onClick={handleOfertasClick}
+    className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full flex flex-col transition-all hover:shadow-lg hover:border-blue-500 group"
+  >
+    <div className="flex items-center justify-between h-full">
+      <div className="flex items-center">
+        <FiTag className="text-2xl text-blue-600 mr-3 group-hover:text-blue-700" />
+        <div>
+          <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600">Confira nossas ofertas</h3>
+          <p className="text-gray-600 mt-1">
+            Veja nosso folheto promocional
+          </p>
+        </div>
+      </div>
+      <span className="text-2xl text-gray-400 group-hover:text-blue-500">→</span>
+    </div>
+  </Link>
+</div>
         </div>
       </div>
 
@@ -161,7 +161,6 @@ const Home = () => {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
               <div key={item} className="bg-gray-100 rounded-lg overflow-hidden h-48">
                 <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  {/* Espaço reservado para imagem de oferta */}
                   <span>Imagem de Oferta {item}</span>
                 </div>
               </div>
@@ -181,7 +180,6 @@ const Home = () => {
               {[1, 2, 3].map((item) => (
                 <div key={item} className="bg-gray-100 rounded-lg overflow-hidden h-64">
                   <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    {/* Espaço reservado para banner promocional */}
                     <span>Banner Promocional {item}</span>
                   </div>
                 </div>

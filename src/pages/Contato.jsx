@@ -7,12 +7,49 @@ const Contato = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   
+  const formatPhoneNumber = (phone) => {
+    // Remove tudo que não é dígito
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    
+    // Formatação básica para números brasileiros
+    const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+    if (match) {
+      return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+    return phone;
+  };
+
   const onSubmit = (data) => {
     setIsSubmitting(true);
     
-    // Simulação de envio - substitua pela integração com EmailJS quando tiver as credenciais
-    console.log('Dados do formulário:', data);
+    // Formata a mensagem para o WhatsApp
+    const whatsappMessage = `
+*Nova mensagem de contato - Silveira Auto Peças*
+
+*Nome:* ${data.name}
+*E-mail:* ${data.email}
+${data.phone ? `*Telefone:* ${formatPhoneNumber(data.phone)}\n` : ''}
+*Assunto:* ${data.subject}
     
+*Mensagem:*
+${data.message}
+    
+_Esta mensagem foi enviada através do formulário de contato do site._
+    `.trim();
+
+    // Codifica a mensagem para URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Número de WhatsApp da empresa
+    const whatsappNumber = '5579998354485';
+    
+    // Cria o link do WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Abre o WhatsApp em uma nova aba
+    window.open(whatsappUrl, '_blank');
+    
+    // Simula o envio (você pode remover isso em produção)
     setTimeout(() => {
       setSubmitStatus('success');
       reset();
@@ -77,13 +114,20 @@ const Contato = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-cinzaEngenharia mb-1">Telefone</label>
+                  <label htmlFor="phone" className="block text-cinzaEngenharia mb-1">Telefone (com DDD)</label>
                   <input
                     id="phone"
                     type="tel"
-                    {...register('phone')}
+                    {...register('phone', {
+                      pattern: {
+                        value: /^(\d{10,11})$/,
+                        message: 'Digite um telefone válido com DDD (10 ou 11 dígitos)'
+                      }
+                    })}
                     className="input-field"
+                    placeholder="(79) 99999-9999"
                   />
+                  {errors.phone && <p className="text-vermelhoPerformance text-sm mt-1">{errors.phone.message}</p>}
                 </div>
                 
                 <div>
@@ -110,6 +154,7 @@ const Contato = () => {
                     rows="5"
                     {...register('message', { required: 'Mensagem é obrigatória' })}
                     className="input-field"
+                    placeholder="Descreva aqui sua solicitação com detalhes..."
                   ></textarea>
                   {errors.message && <p className="text-vermelhoPerformance text-sm mt-1">{errors.message.message}</p>}
                 </div>
@@ -117,9 +162,24 @@ const Contato = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full"
+                  className="btn-primary w-full flex items-center justify-center"
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.479 5.092 1.479 2.396 0 4.6-1.08 6.06-2.983s2.204-4.394 2.203-7.175c0-2.781-1.08-5.337-2.943-7.082-1.862-1.745-4.307-2.672-6.829-2.672-2.532 0-4.971.932-6.828 2.672-1.869 1.754-2.871 4.293-2.871 7.069 0 1.475.302 2.88.899 4.282l.784-2.821.054-.225.145-.576.195-.744.24-.896.113-.432c.04-.155.08-.31.119-.466.176-.676.37-1.418.635-2.178l1.588 5.911z"/>
+                      </svg>
+                      Enviar via WhatsApp
+                    </>
+                  )}
                 </button>
               </form>
             </div>
