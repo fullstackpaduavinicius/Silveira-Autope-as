@@ -24,7 +24,7 @@ const Header = () => {
         <meta name="description" content="Comércio de peças e acessórios automotivos desde 2009. Excelência no atendimento e produtos de alta qualidade." />
       </Helmet>
 
-      <header className="bg-blue-400 text-white shadow-md sticky top-0 z-50">
+      <header className="bg-[#00AEEF] text-white shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -65,7 +65,7 @@ const Header = () => {
             {/* Botão "Encontre nossas lojas" */}
             <button
               onClick={toggleLocationModal}
-              className="hidden md:flex items-center space-x-1 bg-red-500 hover:bg-red-600 px-3 py-1 rounded-full transition"
+              className="hidden md:flex items-center space-x-1 bg-white text-[#00AEEF] hover:bg-gray-100 px-3 py-1 rounded-full transition"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -101,7 +101,7 @@ const Header = () => {
 
         {/* Menu Mobile */}
         {isMenuOpen && (
-          <div className="md:hidden bg-blue-500">
+          <div className="md:hidden bg-[#0085C7]">
             <nav className="container mx-auto px-4 py-2">
               <ul className="flex flex-col space-y-3">
                 <li>
@@ -190,7 +190,7 @@ const Header = () => {
               <div className="bg-white">
                 {/* Header do Modal */}
                 <div className="flex justify-between items-center border-b border-gray-200 p-4">
-                  <h3 className="text-2xl font-bold text-blue-400">Nossa Localização</h3>
+                  <h3 className="text-2xl font-bold text-[#00AEEF]">Nossa Localização</h3>
                   <button
                     onClick={toggleLocationModal}
                     className="text-gray-400 hover:text-gray-500 focus:outline-none"
@@ -214,8 +214,8 @@ const Header = () => {
 
                       <div className="bg-gray-50 p-6 rounded-lg">
                         <div className="flex items-start mb-4">
-                          <div className="bg-blue-100 p-3 rounded-full mr-4">
-                            <FaMapMarkerAlt className="text-blue-400 text-xl" />
+                          <div className="bg-[#00AEEF]/10 p-3 rounded-full mr-4">
+                            <FaMapMarkerAlt className="text-[#00AEEF] text-xl" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-800 mb-1">Endereço</h3>
@@ -227,8 +227,8 @@ const Header = () => {
                         </div>
 
                         <div className="flex items-start mb-4">
-                          <div className="bg-blue-100 p-3 rounded-full mr-4">
-                            <FaClock className="text-blue-400 text-xl" />
+                          <div className="bg-[#00AEEF]/10 p-3 rounded-full mr-4">
+                            <FaClock className="text-[#00AEEF] text-xl" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-800 mb-1">Horário de Funcionamento</h3>
@@ -241,13 +241,13 @@ const Header = () => {
                         </div>
 
                         <div className="flex items-start">
-                          <div className="bg-blue-100 p-3 rounded-full mr-4">
-                            <FaPhone className="text-blue-400 text-xl" />
+                          <div className="bg-[#00AEEF]/10 p-3 rounded-full mr-4">
+                            <FaPhone className="text-[#00AEEF] text-xl" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-800 mb-1">Contato</h3>
                             <p className="text-gray-600 mb-2">
-                              <a href="tel:+5579998354485" className="hover:text-blue-400 transition">(79) 99835-4485</a>
+                              <a href="tel:+5579998354485" className="hover:text-[#00AEEF] transition">(79) 99835-4485</a>
                             </p>
                             <a 
                               href="https://wa.me/5579998354485" 
@@ -262,7 +262,7 @@ const Header = () => {
                       </div>
 
                       {/* Destaque */}
-                      <div className="bg-blue-400 text-white p-5 rounded-lg flex items-start">
+                      <div className="bg-[#00AEEF] text-white p-5 rounded-lg flex items-start">
                         <div className="bg-white/20 p-3 rounded-full mr-4">
                           <FaCar className="text-xl" />
                         </div>
@@ -295,7 +295,7 @@ const Header = () => {
                           href="https://www.google.com/maps/dir//Av.+Gen.+Eucl%C3%ADdes+Figueiredo,+105+-+Dom+Luciano,+Aracaju+-+SE,+49088-245/@-10.8774185,-37.0795382,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x7054cd34277714f:0xaca59d33347d01c6!2m2!1d-37.0795382!2d-10.8774185" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300 flex items-center transition"
+                          className="text-[#00AEEF] hover:text-[#0085C7] flex items-center transition"
                         >
                           <FaMapMarkerAlt className="mr-1" /> Obter rotas
                         </a>
@@ -312,7 +312,7 @@ const Header = () => {
                   <button
                     type="button"
                     onClick={toggleLocationModal}
-                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-400 text-base font-medium text-white hover:bg-blue-500 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#00AEEF] text-base font-medium text-white hover:bg-[#0085C7] focus:outline-none sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Fechar
                   </button>
